@@ -1,0 +1,9 @@
+li {
+  width: 200px;
+  display: flex;
+}
+
+li > * {
+  margin: auto;
+  background-color: bisque;
+}

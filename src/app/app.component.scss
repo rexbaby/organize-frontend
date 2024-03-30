@@ -3,6 +3,9 @@
   height: 100%;
 }
 
-.container {
-  background-color: chartreuse;
+:host ::ng-deep router-outlet + * {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }

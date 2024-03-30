@@ -1,1 +1,16 @@
-<p>core works!</p>
+<div class="container row">
+  <div class="menu fixed">
+    <app-menu></app-menu>
+  </div>
+  <div class="main col container">
+    <div class="header fixed">
+      <app-header></app-header>
+    </div>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <div class="footer fixed">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.row,
+.col {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.row.end,.col.end {
+  justify-content: flex-end;
+}
+
+.row.between,
+.col.between {
+  justify-content: space-between;
+}
+
+.row.center,
+.col.center {
+  justify-content: center;
+}
+
+.row > *:not(.fixed),
+.col > *:not(.fixed) {
+  flex: 1 1 100%;
+}
+
+.row .fixed,
+.col .fixed {
+  flex: 0 0 auto;
+}
