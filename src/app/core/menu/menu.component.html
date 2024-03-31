@@ -1,8 +1,10 @@
-<div class="container">
+<div class="container col">
+  <div class="logo fixed full-center-box">
+    <span class="fz-14">LOGO</span>
+  </div>
   <ul>
-    <li><span>menu</span></li>
-    <li><span>menu</span></li>
-    <li><span>menu</span></li>
-    <li><span>menu</span></li>
+    <li *ngFor="let menu of menus" class="row center">
+      <span class="fz-12">{{ menu.tag }}</span>
+    </li>
   </ul>
 </div>

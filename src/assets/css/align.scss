@@ -14,7 +14,8 @@
   flex-direction: column;
 }
 
-.row.end,.col.end {
+.row.end,
+.col.end {
   justify-content: flex-end;
 }
 
@@ -36,4 +37,14 @@
 .row .fixed,
 .col .fixed {
   flex: 0 0 auto;
+}
+
+// full Center
+.full-center-box {
+  display: flex;
+}
+
+.full-center-box > *,
+.full-center {
+  margin: auto;
 }

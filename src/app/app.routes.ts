@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { CoreComponent } from './core/core.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { IndexComponent } from './index/index.component';
-import { PersonComponent } from './person/person.component';
-import { AreaComponent } from './area/area.component';
+import { IndexComponent } from './cms/index/index.component';
+import { PersonComponent } from './cms/person/person.component';
+import { AreaComponent } from './cms/area/area.component';
 
 export const routes: Routes = [
   {

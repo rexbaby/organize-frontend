@@ -1,9 +1,14 @@
-li {
-  width: 200px;
-  display: flex;
+.logo {
+  height: 60px;
 }
 
-li > * {
-  margin: auto;
+li {
+  width: 200px;
+  padding: 10px 20px;
   background-color: bisque;
+  border: 1px solid #333;
+}
+
+li.active{
+  background-color: blanchedalmond;
 }
