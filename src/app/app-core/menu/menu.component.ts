@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 export class MenuComponent implements OnInit, OnDestroy {
   subscription: Subscription | null = null;
   menus: IPermission[] = [
-    { url: '/area', title: 'Area', suffix: '' },
+    { url: '/district', title: 'District', suffix: '' },
     { url: '/person', title: 'Person', suffix: '' },
   ];
   menuNowIndex = -1;

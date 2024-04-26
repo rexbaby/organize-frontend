@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TableModule } from '../../base-ui/table/table.module';
 import { CommonModule } from '@angular/common';
-import { AreaService } from './area.service';
+import { DistrictService } from './district.service';
 import { IResponse } from '../../base-model/base';
 import { IDistrict } from '../../base-model/district';
-import { DialogDistrictComponent } from './dialog-district/dialog-district.component';
+import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -14,20 +14,20 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     TableModule,
-    DialogDistrictComponent,
+    DialogComponent,
     MatSnackBarModule,
   ],
-  providers: [AreaService],
-  templateUrl: './area.component.html',
-  styleUrl: './area.component.scss',
+  providers: [DistrictService],
+  templateUrl: './district.component.html',
+  styleUrl: './district.component.scss',
 })
-export class AreaComponent implements OnInit {
+export class DistrictComponent implements OnInit {
   nowSelect: any = null;
   nowAction: '' | 'edit' | 'insert' | 'del' = '';
   datas: IDistrict[] = [];
 
   constructor(
-    private areaService: AreaService,
+    private districtService: DistrictService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {}
@@ -37,7 +37,7 @@ export class AreaComponent implements OnInit {
   }
 
   setDatas() {
-    this.areaService.getAllByDistrict().subscribe((res: IResponse) => {
+    this.districtService.getAllByDistrict().subscribe((res: IResponse) => {
       this.datas = <IDistrict[]>res.data;
     });
   }
@@ -57,7 +57,7 @@ export class AreaComponent implements OnInit {
   }
 
   openDialogByDistrict() {
-    const dialogRef = this.dialog.open(DialogDistrictComponent, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       data: this.nowSelect,
     });
     dialogRef.afterClosed().subscribe((result) => {
@@ -71,7 +71,7 @@ export class AreaComponent implements OnInit {
   }
 
   update(id: number, district: IDistrict) {
-    this.areaService
+    this.districtService
       .updateDistrict(id, district)
       .subscribe((res: IResponse) => {
         const result = res.affect?.success || false;
@@ -81,7 +81,7 @@ export class AreaComponent implements OnInit {
   }
 
   create(district: IDistrict) {
-    this.areaService.createDistrict(district).subscribe((res: IResponse) => {
+    this.districtService.createDistrict(district).subscribe((res: IResponse) => {
       const result = res.affect?.success || false;
       this.snackBar.open(result ? 'Insert Success' : 'Insert Fail');
       if (result) this.setDatas();

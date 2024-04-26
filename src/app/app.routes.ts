@@ -3,7 +3,7 @@ import { CoreComponent } from './app-core/core.component';
 import { NotfoundComponent } from './app-abnormal/notfound/notfound.component';
 import { IndexComponent } from './app-cms/index/index.component';
 import { PersonComponent } from './app-cms/person/person.component';
-import { AreaComponent } from './app-cms/area/area.component';
+import { DistrictComponent } from './app-cms/district/district.component';
 
 export const routes: Routes = [
   {
@@ -11,7 +11,7 @@ export const routes: Routes = [
     component: CoreComponent,
     children: [
       { path: 'index', component: IndexComponent },
-      { path: 'area', component: AreaComponent },
+      { path: 'district', component: DistrictComponent },
       { path: 'person', component: PersonComponent },
     ],
   },

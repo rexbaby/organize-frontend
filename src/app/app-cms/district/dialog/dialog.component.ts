@@ -14,19 +14,19 @@ import {
 import { IDistrict } from '../../../base-model/district';
 
 @Component({
-  selector: 'app-dialog-district',
+  selector: 'app-district-dialog',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatDialogModule],
-  templateUrl: './dialog-district.component.html',
-  styleUrl: './dialog-district.component.scss',
+  templateUrl: './dialog.component.html',
+  styleUrl: './dialog.component.scss',
 })
-export class DialogDistrictComponent implements OnInit {
+export class DialogComponent implements OnInit {
   formGroup!: FormGroup;
   action: 'Insert' | 'Edit' = 'Insert';
 
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<DialogDistrictComponent>,
+    public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IDistrict | null
   ) {}
 

@@ -4,7 +4,7 @@ import { take } from 'rxjs/operators';
 import { IDistrict } from '../../base-model/district';
 
 @Injectable()
-export class AreaService {
+export class DistrictService {
   constructor(private httpService: HttpService) {}
 
   getAllByDistrict() {
