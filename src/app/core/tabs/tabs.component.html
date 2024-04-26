@@ -1,1 +1,8 @@
-<p>tabs works!</p>
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  @for (tab of tabs; track tab) {
+  <div mat-tab-link (click)="tabClick(tab)">
+    <span>{{ tab }}</span>
+  </div>
+  }
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

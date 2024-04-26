@@ -7,7 +7,7 @@
       <app-header></app-header>
     </div>
     <main>
-      <app-tabs></app-tabs>
+      <app-tabs [tabs]="tabs" [tabNowIndex]="tabNowIndex" (tabDelEvent)="tabDel($event)" (tabClickEvent)="tabClick($event)"></app-tabs>
       <router-outlet></router-outlet>
     </main>
     <div class="footer fixed">
