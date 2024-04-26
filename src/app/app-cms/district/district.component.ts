@@ -12,12 +12,7 @@ import { PermissionService } from '../../base-service/permission/permission.serv
 @Component({
   selector: 'app-district',
   standalone: true,
-  imports: [
-    CommonModule,
-    TableModule,
-    DialogComponent,
-    MatSnackBarModule,
-  ],
+  imports: [CommonModule, TableModule, DialogComponent, MatSnackBarModule],
   providers: [DistrictService],
   templateUrl: './district.component.html',
   styleUrl: './district.component.scss',
@@ -48,13 +43,13 @@ export class DistrictComponent implements OnInit {
     this.nowSelect = this.datas[index];
   }
 
-  dept(index: number){
+  dept(index: number) {
     this.setNowSelect(index);
     this.permissionService.nextPermissionBranch({
-      url:`district/${index}/dept`,
-      title:`Dept_${this.nowSelect.name}`,
-      suffix:''
-    })
+      url: `district/${this.nowSelect.id}/dept`,
+      title: `Dept_${this.nowSelect.name}`,
+      suffix: '',
+    });
   }
 
   insert() {
@@ -82,13 +77,11 @@ export class DistrictComponent implements OnInit {
   }
 
   update(id: number, district: IDistrict) {
-    this.districtService
-      .update(id, district)
-      .subscribe((res: IResponse) => {
-        const result = res.affect?.success || false;
-        this.snackBar.open(result ? 'Edit Success' : 'Edit Fail');
-        if (result) this.setDatas();
-      });
+    this.districtService.update(id, district).subscribe((res: IResponse) => {
+      const result = res.affect?.success || false;
+      this.snackBar.open(result ? 'Edit Success' : 'Edit Fail');
+      if (result) this.setDatas();
+    });
   }
 
   create(district: IDistrict) {

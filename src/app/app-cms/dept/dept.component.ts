@@ -21,6 +21,7 @@ export class DeptComponent implements OnInit {
   nowSelect: any = null;
   nowAction: '' | 'edit' | 'insert' | 'del' = '';
   datas: IDept[] = [];
+  districtId = -1;
 
   constructor(
     private deptService: DeptService,
@@ -30,13 +31,12 @@ export class DeptComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['id'];
-    console.log(3366, id);
+    this.districtId = this.route.snapshot.params['id'];
     this.setDatas();
   }
 
   setDatas() {
-    this.deptService.getAll().subscribe((res: IResponse) => {
+    this.deptService.getAll(this.districtId).subscribe((res: IResponse) => {
       this.datas = <IDept[]>res.data;
     });
   }
