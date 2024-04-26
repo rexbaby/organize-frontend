@@ -22,7 +22,8 @@ import { Subscription } from 'rxjs/internal/Subscription';
   styleUrl: './core.component.scss',
 })
 export class CoreComponent implements OnInit, OnDestroy {
-  subscription: Subscription | null = null;
+  subscriptionPermission: Subscription | null = null;
+  subscriptionBranch: Subscription | null = null;
   tabs: IPermission[] = [];
   tabNowIndex = -1;
 
@@ -33,16 +34,27 @@ export class CoreComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.contentSwitch();
+
     const permission$ = this.permissionService.isPermissionIn();
     if (!permission$) return;
-    this.subscription = permission$.subscribe((p) => {
+    this.subscriptionPermission = permission$.subscribe((p) => {
       this.tabCheck(p);
+    });
+
+    const branch$ = this.permissionService.isPermissionBranchIn();
+    if (!branch$) return;
+    this.subscriptionBranch = branch$.subscribe((p) => {
+      this.tabCheck(p);
+      this.permissionService.nextPermissionCheck(p);
     });
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.subscriptionPermission) {
+      this.subscriptionPermission.unsubscribe();
+    }
+    if (this.subscriptionBranch) {
+      this.subscriptionBranch.unsubscribe();
     }
   }
 
@@ -75,7 +87,7 @@ export class CoreComponent implements OnInit, OnDestroy {
 
     if (this.tabNowIndex === i) {
       this.tabs.splice(i, 1);
-      this.tabNowIndex === this.tabs.length - 1;
+      this.tabNowIndex = this.tabs.length - 1;
     } else {
       const tabNowPause = this.tabs[this.tabNowIndex];
       this.tabs.splice(i, 1);

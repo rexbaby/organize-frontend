@@ -1,0 +1,17 @@
+.container {
+  flex-direction: column;
+}
+
+.container .header {
+  flex: 0 0 20px;
+  border-bottom: 2px dotted darkcyan;
+}
+
+.container .footer {
+  flex: 0 0 40px;
+}
+
+.container .main {
+  flex: 1;
+  min-height: 200px;
+}

@@ -9,9 +9,11 @@ import { Observable } from 'rxjs/internal/Observable';
 export class PermissionService {
   private permissionSubject = new Subject<IPermission>();
   private permissionCheckSubject = new Subject<IPermission | null>();
+  private permissionBranchSubject = new Subject<IPermission>();
 
   constructor() {}
 
+  // Menu->Core
   nextPermission(p: IPermission) {
     this.permissionSubject.next(p);
   }
@@ -23,6 +25,7 @@ export class PermissionService {
     return null;
   }
 
+  // Core->Menu
   nextPermissionCheck(p: IPermission | null) {
     this.permissionCheckSubject.next(p);
   }
@@ -30,6 +33,18 @@ export class PermissionService {
   isPermissionCheckIn(): Observable<IPermission | null> | null {
     if (this.permissionCheckSubject) {
       return this.permissionCheckSubject.asObservable();
+    }
+    return null;
+  }
+
+  // Branch->Core
+  nextPermissionBranch(p: IPermission) {
+    this.permissionBranchSubject.next(p);
+  }
+
+  isPermissionBranchIn(): Observable<IPermission> | null {
+    if (this.permissionBranchSubject) {
+      return this.permissionBranchSubject.asObservable();
     }
     return null;
   }

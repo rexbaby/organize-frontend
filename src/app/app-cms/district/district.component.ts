@@ -7,9 +7,10 @@ import { IDistrict } from '../../base-model/district';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { PermissionService } from '../../base-service/permission/permission.service';
 
 @Component({
-  selector: 'app-area',
+  selector: 'app-district',
   standalone: true,
   imports: [
     CommonModule,
@@ -29,7 +30,8 @@ export class DistrictComponent implements OnInit {
   constructor(
     private districtService: DistrictService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private permissionService: PermissionService
   ) {}
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class DistrictComponent implements OnInit {
   }
 
   setDatas() {
-    this.districtService.getAllByDistrict().subscribe((res: IResponse) => {
+    this.districtService.getAll().subscribe((res: IResponse) => {
       this.datas = <IDistrict[]>res.data;
     });
   }
@@ -46,17 +48,26 @@ export class DistrictComponent implements OnInit {
     this.nowSelect = this.datas[index];
   }
 
+  dept(index: number){
+    this.setNowSelect(index);
+    this.permissionService.nextPermissionBranch({
+      url:`district/${index}/dept`,
+      title:`Dept_${this.nowSelect.name}`,
+      suffix:''
+    })
+  }
+
   insert() {
     this.nowSelect = null;
-    this.openDialogByDistrict();
+    this.openDialog();
   }
 
   edit(index: number) {
     this.setNowSelect(index);
-    this.openDialogByDistrict();
+    this.openDialog();
   }
 
-  openDialogByDistrict() {
+  openDialog() {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: this.nowSelect,
     });
@@ -72,7 +83,7 @@ export class DistrictComponent implements OnInit {
 
   update(id: number, district: IDistrict) {
     this.districtService
-      .updateDistrict(id, district)
+      .update(id, district)
       .subscribe((res: IResponse) => {
         const result = res.affect?.success || false;
         this.snackBar.open(result ? 'Edit Success' : 'Edit Fail');
@@ -81,7 +92,7 @@ export class DistrictComponent implements OnInit {
   }
 
   create(district: IDistrict) {
-    this.districtService.createDistrict(district).subscribe((res: IResponse) => {
+    this.districtService.create(district).subscribe((res: IResponse) => {
       const result = res.affect?.success || false;
       this.snackBar.open(result ? 'Insert Success' : 'Insert Fail');
       if (result) this.setDatas();
