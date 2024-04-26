@@ -21,10 +21,10 @@
           <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
             <span>{{ data.id }}</span>
           </div>
-          <div>
+          <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
             <span>{{ data.account }}</span>
           </div>
-          <div>
+          <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
             <button type="button" (click)="edit(i)">
               {{ "Edit" }}
             </button>

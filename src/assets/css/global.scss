@@ -49,6 +49,12 @@ textarea {
 
 button{
   padding: 0 10px;
+  cursor: pointer;
+}
+
+button:hover{
+  padding: 0 10px;
+  background-color: darkgoldenrod;
 }
 
 * {
