@@ -3,9 +3,13 @@
     <span>{{ action }}</span>
   </div>
   <div class="main">
+    <div class="row">
+      <span>DistrictName:</span>
+      <span>{{ data?.district?.name }}</span>
+    </div>
     <form [formGroup]="formGroup">
-      <span class="fixed">AreaName</span>
-      <input type="text" formControlName="name" class="input"/>
+      <span class="fixed">DeptName:</span>
+      <input type="text" formControlName="name" class="input" />
     </form>
   </div>
   <div class="footer row center">

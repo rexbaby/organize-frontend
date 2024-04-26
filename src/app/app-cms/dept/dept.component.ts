@@ -31,7 +31,7 @@ export class DeptComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.districtId = this.route.snapshot.params['id'];
+    this.districtId = +this.route.snapshot.params['id'];
     this.setDatas();
   }
 
@@ -60,12 +60,20 @@ export class DeptComponent implements OnInit {
       data: this.nowSelect,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      result = Object.assign(result, { status: 1 });
-      // if (this.nowSelect) {
-      //   this.update(this.nowSelect.id, result);
-      // } else {
-      //   this.create(result);
-      // }
+      if (!result) return;
+      result = Object.assign(result, {
+        status: 1,
+        createdBy: 1,
+        updatedBy: 1,
+      });
+      if (this.nowSelect) {
+        this.update(this.nowSelect.id, result);
+      } else {
+        result = Object.assign(result, {
+          districtId: this.districtId,
+        });
+        this.create(result);
+      }
     });
   }
 

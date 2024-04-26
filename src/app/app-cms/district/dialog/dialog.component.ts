@@ -22,7 +22,7 @@ import { IDistrict } from '../../../base-model/district';
 })
 export class DialogComponent implements OnInit {
   formGroup!: FormGroup;
-  action: 'Insert' | 'Edit' = 'Insert';
+  action: 'Dialog Insert' | 'Dialog Edit' = 'Dialog Insert';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,11 +31,11 @@ export class DialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.action = !!this.data ? 'Edit' : 'Insert';
+    this.action = !!this.data ? 'Dialog Edit' : 'Dialog Insert';
     this.formGroup = this.formBuilder.group({
       name: ['', Validators.required],
     });
-    if (this.action === 'Edit') {
+    if (this.action === 'Dialog Edit') {
       this.formGroup.patchValue({
         name: this.data?.name || '',
       });

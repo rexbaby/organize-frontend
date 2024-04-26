@@ -60,6 +60,7 @@
   background-color: gray;
 }
 
-.grid-row > * {
+.grid-row > *,
+.grid-title > * {
   margin: auto 0;
 }
