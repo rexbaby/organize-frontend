@@ -19,6 +19,7 @@ export class TabsComponent {
   tabClick(p: IPermission) {
     this.tabClickEvent.emit(p);
   }
+
   tabDel(p: IPermission) {
     this.tabDelEvent.emit(p);
   }

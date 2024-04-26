@@ -3,10 +3,11 @@
   <div
     mat-tab-link
     (click)="tabClick(tab)"
-    class="tab"
+    class="row between tab"
     [ngClass]="{ active: tabNowIndex === i }"
   >
     <span>{{ tab.title + tab.suffix }}</span>
+    <button (click)="tabDel(tab)">X</button>
   </div>
   }
 </nav>

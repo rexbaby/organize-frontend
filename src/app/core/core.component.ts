@@ -72,10 +72,16 @@ export class CoreComponent implements OnInit, OnDestroy {
   tabDel(p: IPermission) {
     const i = this.tabCatchIndex(p);
     if (i === -1) return;
-    if (this.tabNowIndex === i) this.tabNowIndex--;
-    this.tabs.splice(i, 1);
-    this.contentSwitch();
 
+    if (this.tabNowIndex === i) {
+      this.tabs.splice(i, 1);
+      this.tabNowIndex === this.tabs.length - 1;
+    } else {
+      const tabNowPause = this.tabs[this.tabNowIndex];
+      this.tabs.splice(i, 1);
+      this.tabNowIndex = this.tabCatchIndex(tabNowPause);
+    }
+    this.contentSwitch();
     const tabNow = this.tabNowIndex === -1 ? null : this.tabs[this.tabNowIndex];
     this.permissionService.nextPermissionCheck(tabNow);
   }
