@@ -3,8 +3,12 @@
     <span class="fz-14">LOGO</span>
   </div>
   <ul>
-    <li *ngFor="let menu of menus" class="row center">
-      <span class="fz-12">{{ menu.tag }}</span>
+    <li
+      *ngFor="let menu of menus; let i = index"
+      class="row center"
+      (click)="menuClick(i)"
+    >
+      <span class="fz-12">{{ menu.title + menu.suffix }}</span>
     </li>
   </ul>
 </div>
