@@ -18,12 +18,6 @@ import {
 })
 export class TableComponent implements AfterViewChecked {
   @ViewChild('gridTable', { static: true }) gridTable: ElementRef | null = null;
-  // @Output() scrollEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
-  // @Input() isScrollTop = {};
-  // device: TDevice | null = null;
-  // private observer: ResizeObserver | null = null;
-  // isHasScroll = false;
-
   @Input() datas!: Array<any>;
   @Input() titles!: TemplateRef<any>;
   @Input() datarow!: TemplateRef<any>;

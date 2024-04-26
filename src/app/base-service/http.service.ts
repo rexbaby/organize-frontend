@@ -95,13 +95,7 @@ export class HttpService {
   };
 
   responseHandle = (res: HttpResponse<any>): IResponse => {
-    const result: IResponse = {
-      datas: res.body || undefined,
-    };
-    if (res.body.error) {
-      result.error = res.body.error;
-    }
-    return result;
+    return res.body;
   };
 
   httpStatusHandle = (res: HttpErrorResponse): Observable<IResponse> => {

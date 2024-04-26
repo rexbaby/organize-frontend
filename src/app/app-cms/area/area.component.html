@@ -1,5 +1,7 @@
 <div class="container">
-  <div class="setting">Setting</div>
+  <div class="setting row end">
+    <button type="button" (click)="insert()">Insert</button>
+  </div>
   <div class="table">
     <ui-table [datas]="datas" [titles]="titles" [datarow]="datarow">
       <!-- Template titles-->
@@ -8,7 +10,7 @@
           <span>{{ "ID" }}</span>
         </div>
         <div>
-          <span>{{ "Account" }}</span>
+          <span>{{ "Name" }}</span>
         </div>
         <div>
           <span>{{ "Action" }}</span>
@@ -22,7 +24,7 @@
             <span>{{ data.id }}</span>
           </div>
           <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
-            <span>{{ data.account }}</span>
+            <span>{{ data.name }}</span>
           </div>
           <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
             <button type="button" (click)="edit(i)">

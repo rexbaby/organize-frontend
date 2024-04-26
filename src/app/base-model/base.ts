@@ -4,11 +4,24 @@ export interface IModel {
 
 export interface IResponse {
   error?: IError;
-  datas?: IModel | IModel[];
+  data?: any;
+  limit?: ILimit;
+  affect?: IResAffected;
+}
+
+export interface ILimit {
+  length: number;
+  pageIndex: number;
+  pageSize: number;
+}
+
+export interface IResAffected {
+  success: boolean;
+  id?: number;
 }
 
 export interface IError {
-  code: string; //錯誤碼
-  label: string; //前端對外的錯誤訊息
-  message?: string; //後端傳回的錯誤訊息
+  code: number;
+  message: string;
+  timestamp: string;
 }
