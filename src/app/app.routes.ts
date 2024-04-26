@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { CoreComponent } from './core/core.component';
-import { NotfoundComponent } from './notfound/notfound.component';
+import { NotfoundComponent } from './app-abnormal/notfound/notfound.component';
 import { IndexComponent } from './cms/index/index.component';
 import { PersonComponent } from './cms/person/person.component';
 import { AreaComponent } from './cms/area/area.component';
