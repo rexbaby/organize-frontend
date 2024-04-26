@@ -1,0 +1,14 @@
+.container {
+  flex-direction: column;
+}
+
+.container .options {
+  flex: 0 0 auto;
+}
+
+.container .grid-table {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  flex: 1 0 1px;
+}

@@ -1,0 +1,65 @@
+/*
+*  Layout
+*/
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+  grid-auto-rows: 60px;
+  grid-auto-flow: row;
+  grid-gap: 10px;
+}
+
+.grid-row > * {
+  display: flex;
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.grid-row > *.column2 {
+  grid-column: span 2;
+}
+
+.grid-row > *.column3 {
+  grid-column: span 3;
+}
+
+.grid-title .mat-icon {
+  cursor: pointer;
+}
+
+.grid-row input,
+.grid-row select {
+  flex: 1;
+}
+
+/*
+*  Styles
+*/
+//
+.grid-title {
+  background-color: transparent;
+  color: gray;
+  font-weight: 500;
+  grid-auto-rows: 40px;
+}
+
+.grid-title span {
+  white-space: nowrap;
+}
+
+.grid-row:not(.grid-title) {
+  background-color: #fff;
+  color: #333;
+}
+
+.grid-row span {
+  overflow-wrap: break-word;
+}
+
+.grid-row:nth-child(even) {
+  background-color: gray;
+}
+
+.grid-row > * {
+  margin: auto 0;
+}

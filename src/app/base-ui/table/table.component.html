@@ -1,0 +1,17 @@
+<div class="container" [hidden]="!datas || !datas.length">
+  <div class="options">
+    <div class="grid-row grid-title">
+      <ng-container *ngTemplateOutlet="titles"></ng-container>
+    </div>
+  </div>
+  <div #gridTable class="grid-table">
+    <div>
+      <div class="grid-row" *ngFor="let data of datas; let i = index">
+        <ng-container
+          *ngTemplateOutlet="datarow; context: { data: data, i: i }"
+        >
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,36 @@
-<p>area works!</p>
+<div class="container">
+  <div class="setting">Setting</div>
+  <div class="table">
+    <ui-table [datas]="datas" [titles]="titles" [datarow]="datarow">
+      <!-- Template titles-->
+      <ng-template #titles>
+        <div>
+          <span>{{ "ID" }}</span>
+        </div>
+        <div>
+          <span>{{ "Account" }}</span>
+        </div>
+        <div>
+          <span>{{ "Action" }}</span>
+        </div>
+      </ng-template>
+
+      <!-- Template datarow-->
+      <ng-template #datarow let-data="data" let-i="i">
+        <ng-container *ngIf="data">
+          <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
+            <span>{{ data.id }}</span>
+          </div>
+          <div>
+            <span>{{ data.account }}</span>
+          </div>
+          <div>
+            <button type="button" (click)="edit(i)">
+              {{ "Edit" }}
+            </button>
+          </div>
+        </ng-container>
+      </ng-template>
+    </ui-table>
+  </div>
+</div>
