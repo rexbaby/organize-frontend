@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class PermissionService {
   private permissionSubject = new Subject<IPermission>();
+  private permissionCheckSubject = new Subject<IPermission | null>();
 
   constructor() {}
 
@@ -18,6 +19,17 @@ export class PermissionService {
   isPermissionIn(): Observable<IPermission> | null {
     if (this.permissionSubject) {
       return this.permissionSubject.asObservable();
+    }
+    return null;
+  }
+
+  nextPermissionCheck(p: IPermission | null) {
+    this.permissionCheckSubject.next(p);
+  }
+
+  isPermissionCheckIn(): Observable<IPermission | null> | null {
+    if (this.permissionCheckSubject) {
+      return this.permissionCheckSubject.asObservable();
     }
     return null;
   }

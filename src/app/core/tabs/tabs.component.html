@@ -1,6 +1,11 @@
 <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-  @for (tab of tabs; track tab) {
-  <div mat-tab-link (click)="tabClick(tab)">
+  @for (tab of tabs; track tab.title;let i = $index) {
+  <div
+    mat-tab-link
+    (click)="tabClick(tab)"
+    class="tab"
+    [ngClass]="{ active: tabNowIndex === i }"
+  >
     <span>{{ tab.title + tab.suffix }}</span>
   </div>
   }

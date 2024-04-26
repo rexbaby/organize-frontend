@@ -1,6 +1,4 @@
 @import "assets/css/global.scss";
 @import "assets/css/align.scss";
-
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "assets/css/font.scss";
+@import "assets/css/help.scss";

@@ -66,6 +66,7 @@ export class CoreComponent implements OnInit, OnDestroy {
     const i = this.tabCatchIndex(p);
     this.tabNowIndex = i;
     this.contentSwitch();
+    this.permissionService.nextPermissionCheck(p);
   }
 
   tabDel(p: IPermission) {
@@ -74,10 +75,13 @@ export class CoreComponent implements OnInit, OnDestroy {
     if (this.tabNowIndex === i) this.tabNowIndex--;
     this.tabs.splice(i, 1);
     this.contentSwitch();
+
+    const tabNow = this.tabNowIndex === -1 ? null : this.tabs[this.tabNowIndex];
+    this.permissionService.nextPermissionCheck(tabNow);
   }
 
   contentSwitch() {
-    console.log(44,this.tabs)
+    console.log(44, this.tabs);
     if (!this.tabs.length) {
       this.router.navigate(['/index']);
       return;

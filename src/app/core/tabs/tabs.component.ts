@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IPermission } from '../../service/permission/permission';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tabs',
   standalone: true,
-  imports: [MatTabsModule],
+  imports: [CommonModule, MatTabsModule],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
 })
