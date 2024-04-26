@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IPermission } from '../../service/permission/permission';
-import { PermissionService } from '../../service/permission/permission.service';
+import { IPermission } from '../../base-service/permission/permission';
+import { PermissionService } from '../../base-service/permission/permission.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({

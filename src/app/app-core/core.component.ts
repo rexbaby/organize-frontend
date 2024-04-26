@@ -4,8 +4,8 @@ import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { TabsComponent } from './tabs/tabs.component';
-import { IPermission } from '../service/permission/permission';
-import { PermissionService } from '../service/permission/permission.service';
+import { IPermission } from '../base-service/permission/permission';
+import { PermissionService } from '../base-service/permission/permission.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
