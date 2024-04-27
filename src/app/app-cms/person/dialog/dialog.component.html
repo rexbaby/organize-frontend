@@ -11,7 +11,7 @@
       <span class="fixed">通訊處名稱：</span>
       <span>{{ deptName }}</span>
     </div>
-    <form [formGroup]="formGroup">
+    <form [formGroup]="formGroup" *ngIf="formGroup">
       <div class="row" *ngIf="this.data.districtId === -1">
         <span class="fixed">區域名稱：</span>
         <select

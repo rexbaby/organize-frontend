@@ -47,8 +47,8 @@ export class DialogComponent implements OnInit {
     this.action = !!this.data.sel ? '人員編輯' : '人員新增';
     this.districtService.getAll().subscribe((res: IResponse) => {
       this.districts = <IDistrict[]>res.data;
+      this.setFormgroup();
     });
-    this.setFormgroup();
   }
 
   setFormgroup() {
