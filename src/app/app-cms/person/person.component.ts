@@ -86,6 +86,7 @@ export class PersonComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(DialogComponent, {
+      width: '400px',
       data: {
         sel: this.nowSelect,
         districtId: districtId,

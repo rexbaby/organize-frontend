@@ -74,6 +74,7 @@ export class DistrictComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent, {
+      width: '400px',
       data: this.nowSelect,
     });
     dialogRef.afterClosed().subscribe((result) => {
