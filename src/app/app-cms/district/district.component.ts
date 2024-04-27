@@ -53,7 +53,7 @@ export class DistrictComponent implements OnInit {
     });
   }
 
-  viewPersons(index: number){
+  viewPersons(index: number) {
     const district = this.datas[index];
     this.permissionService.nextPermissionBranch({
       url: `district/${district.id}/person`,
@@ -80,7 +80,7 @@ export class DistrictComponent implements OnInit {
       if (!result) {
         this.nowSelect = null;
         return;
-      };
+      }
       result = Object.assign(result, { status: 1 });
       if (this.nowSelect) {
         this.update(this.nowSelect.id, result);
@@ -94,7 +94,9 @@ export class DistrictComponent implements OnInit {
   update(id: number, district: IDistrict) {
     this.districtService.update(id, district).subscribe((res: IResponse) => {
       const result = res.affect?.success || false;
-      this.snackBar.open(result ? 'Edit Success' : 'Edit Fail');
+      this.snackBar.open(result ? '編輯成功' : '編輯失敗', undefined, {
+        duration: 3000,
+      });
       if (result) this.setDatas();
     });
   }
@@ -102,7 +104,9 @@ export class DistrictComponent implements OnInit {
   create(district: IDistrict) {
     this.districtService.create(district).subscribe((res: IResponse) => {
       const result = res.affect?.success || false;
-      this.snackBar.open(result ? 'Insert Success' : 'Insert Fail');
+      this.snackBar.open(result ? '新增成功' : '新增失敗', undefined, {
+        duration: 3000,
+      });
       if (result) this.setDatas();
     });
   }

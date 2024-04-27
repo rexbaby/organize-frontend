@@ -66,7 +66,7 @@ export class DeptComponent implements OnInit {
       if (!result) {
         this.nowSelect = null;
         return;
-      };
+      }
       result = Object.assign(result, {
         status: 1,
         createdBy: 1,
@@ -87,7 +87,9 @@ export class DeptComponent implements OnInit {
   update(id: number, dept: IDept) {
     this.deptService.update(id, dept).subscribe((res: IResponse) => {
       const result = res.affect?.success || false;
-      this.snackBar.open(result ? 'Edit Success' : 'Edit Fail');
+      this.snackBar.open(result ? '編輯成功' : '編輯失敗', undefined, {
+        duration: 3000,
+      });
       if (result) this.setDatas();
     });
   }
@@ -95,7 +97,9 @@ export class DeptComponent implements OnInit {
   create(dept: IDept) {
     this.deptService.create(dept).subscribe((res: IResponse) => {
       const result = res.affect?.success || false;
-      this.snackBar.open(result ? 'Insert Success' : 'Insert Fail');
+      this.snackBar.open(result ? '新增成功' : '新增失敗', undefined, {
+        duration: 3000,
+      });
       if (result) this.setDatas();
     });
   }

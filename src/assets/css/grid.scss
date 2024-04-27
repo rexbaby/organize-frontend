@@ -55,7 +55,7 @@
   overflow-wrap: break-word;
 }
 
-.grid-row:nth-child(even) {
+.grid-row:nth-child(odd):not(.grid-title)  {
   background-color: gray;
 }
 

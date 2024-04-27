@@ -38,7 +38,7 @@
           <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
             <span>{{ data.dept.name }}</span>
           </div>
-          <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
+          <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }" class="actions">
             <button type="button" (click)="edit(i)">
               {{ "編輯" }}
             </button>

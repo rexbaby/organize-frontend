@@ -95,7 +95,7 @@ export class PersonComponent implements OnInit {
       if (!result) {
         this.nowSelect = null;
         return;
-      };
+      }
       result = Object.assign(result, {
         status: 1,
         createdBy: 1,
@@ -118,7 +118,9 @@ export class PersonComponent implements OnInit {
   update(id: number, staff: IStaff) {
     this.personService.update(id, staff).subscribe((res: IResponse) => {
       const result = res.affect?.success || false;
-      this.snackBar.open(result ? 'Edit Success' : 'Edit Fail');
+      this.snackBar.open(result ? '編輯成功' : '編輯失敗', undefined, {
+        duration: 3000,
+      });
       if (result) this.setDatas();
     });
   }
@@ -126,7 +128,9 @@ export class PersonComponent implements OnInit {
   create(staff: IStaff) {
     this.personService.create(staff).subscribe((res: IResponse) => {
       const result = res.affect?.success || false;
-      this.snackBar.open(result ? 'Insert Success' : 'Insert Fail');
+      this.snackBar.open(result ? '新增成功' : '新增失敗', undefined, {
+        duration: 3000,
+      });
       if (result) this.setDatas();
     });
   }
