@@ -63,7 +63,10 @@ export class DeptComponent implements OnInit {
       data: this.nowSelect,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if (!result) return;
+      if (!result) {
+        this.nowSelect = null;
+        return;
+      };
       result = Object.assign(result, {
         status: 1,
         createdBy: 1,
@@ -71,6 +74,7 @@ export class DeptComponent implements OnInit {
       });
       if (this.nowSelect) {
         this.update(this.nowSelect.id, result);
+        this.nowSelect = null;
       } else {
         result = Object.assign(result, {
           districtId: this.districtId,
@@ -96,7 +100,7 @@ export class DeptComponent implements OnInit {
     });
   }
 
-  viewPersons(index: number){
+  viewPersons(index: number) {
     const dept = this.datas[index];
     this.permissionService.nextPermissionBranch({
       url: `district/${this.districtId}/dept/${dept.id}/person`,

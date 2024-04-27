@@ -92,7 +92,10 @@ export class PersonComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if (!result) return;
+      if (!result) {
+        this.nowSelect = null;
+        return;
+      };
       result = Object.assign(result, {
         status: 1,
         createdBy: 1,
@@ -101,6 +104,7 @@ export class PersonComponent implements OnInit {
       if (this.nowSelect) {
         delete result.deptId;
         this.update(this.nowSelect.id, result);
+        this.nowSelect = null;
       } else {
         result = Object.assign(result, {
           level: 1,
