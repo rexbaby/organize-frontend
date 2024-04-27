@@ -79,6 +79,7 @@ export class PersonComponent implements OnInit {
   openDialog() {
     let districtId = this.districtId;
     let deptId = this.deptId;
+
     if (this.nowSelect) {
       districtId = this.nowSelect.dept.district.id;
       deptId = this.nowSelect.dept.id;
@@ -91,6 +92,7 @@ export class PersonComponent implements OnInit {
         deptId: deptId,
       },
     });
+
     dialogRef.afterClosed().subscribe((result) => {
       if (!result) {
         this.nowSelect = null;
@@ -108,7 +110,7 @@ export class PersonComponent implements OnInit {
       } else {
         result = Object.assign(result, {
           level: 1,
-          deptId: result.deptId === -1 ? this.deptId : result.deptId,
+          deptId: result.deptId === -1 ? deptId : result.deptId,
         });
         this.create(result);
       }

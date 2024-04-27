@@ -67,10 +67,11 @@ export class DialogComponent implements OnInit {
           deptId: ['', Validators.required],
         });
         this.setDistrictName();
+        this.setDepts(this.data.districtId);
         break;
       case this.data.districtId > -1 && this.data.deptId > -1:
         this.setDistrictName();
-        this.setDepts(this.data.districtId,() => this.setDeptName())
+        this.setDepts(this.data.districtId, () => this.setDeptName());
         break;
     }
     this.formGroup = this.formBuilder.group(o);
@@ -83,25 +84,23 @@ export class DialogComponent implements OnInit {
     if (index !== -1) this.districtName = this.districts[index].name;
   }
 
-  setDeptName(){
-    const index = this.depts
-      .map((dept) => dept.id)
-      .indexOf(this.data.deptId);
+  setDeptName() {
+    const index = this.depts.map((dept) => dept.id).indexOf(this.data.deptId);
     if (index !== -1) this.deptName = this.depts[index].name;
   }
 
-  setDepts(districtId:number,callback?:()=>void) {
-    this.deptService
-      .getAll(districtId)
-      .subscribe((res: IResponse) => {
-        this.depts = <IDept[]>res.data;
-        if(callback) callback();
-      });
+  setDepts(districtId: number, callback?: () => void) {
+    this.deptService.getAll(districtId).subscribe((res: IResponse) => {
+      this.depts = <IDept[]>res.data;
+      if (callback) callback();
+    });
   }
 
   enter() {
     const formValue = this.formGroup.value;
-    formValue.deptId = Number(formValue.deptId);
+    formValue.deptId = formValue.deptId
+      ? Number(formValue.deptId)
+      : this.data.deptId;
     delete formValue.districtId;
     this.dialogRef.close(this.formGroup.value);
   }
