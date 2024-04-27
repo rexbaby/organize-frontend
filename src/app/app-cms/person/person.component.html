@@ -1,1 +1,50 @@
-<p>person works!</p>
+<div class="container">
+  <div class="setting row end">
+    <button type="button" (click)="insert()">新增</button>
+  </div>
+  <div class="table">
+    <ui-table [datas]="datas" [titles]="titles" [datarow]="datarow">
+      <!-- Template titles-->
+      <ng-template #titles>
+        <div>
+          <span>{{ "ID" }}</span>
+        </div>
+        <div>
+          <span>{{ "人員名稱" }}</span>
+        </div>
+        <div>
+          <span>{{ "職稱" }}</span>
+        </div>
+        <div>
+          <span>{{ "通訊處名稱" }}</span>
+        </div>
+        <div>
+          <span>{{ "動作" }}</span>
+        </div>
+      </ng-template>
+
+      <!-- Template datarow-->
+      <ng-template #datarow let-data="data" let-i="i">
+        <ng-container *ngIf="data">
+          <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
+            <span>{{ data.id }}</span>
+          </div>
+          <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
+            <span>{{ data.staff.name }}</span>
+          </div>
+          <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
+            <span>{{ data.level }}</span>
+          </div>
+          <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
+            <span>{{ data.dept.name }}</span>
+          </div>
+          <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
+            <button type="button" (click)="edit(i)">
+              {{ "編輯" }}
+            </button>
+          </div>
+        </ng-container>
+      </ng-template>
+    </ui-table>
+  </div>
+</div>

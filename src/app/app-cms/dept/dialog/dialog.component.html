@@ -4,16 +4,16 @@
   </div>
   <div class="main">
     <div class="row">
-      <span>DistrictName:</span>
+      <span>區域名稱：</span>
       <span>{{ data?.district?.name }}</span>
     </div>
     <form [formGroup]="formGroup">
-      <span class="fixed">DeptName:</span>
+      <span class="fixed">通訊處名稱：</span>
       <input type="text" formControlName="name" class="input" />
     </form>
   </div>
   <div class="footer row center">
-    <button type="button" (click)="cancel()">Cancel</button>
-    <button type="button" (click)="enter()">Enter</button>
+    <button type="button" (click)="cancel()">取消</button>
+    <button type="button" (click)="enter()">確定</button>
   </div>
 </div>

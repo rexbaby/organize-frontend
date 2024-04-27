@@ -1,6 +1,6 @@
 <div class="container">
   <div class="setting row end">
-    <button type="button" (click)="insert()">Insert</button>
+    <button type="button" (click)="insert()">新增</button>
   </div>
   <div class="table">
     <ui-table [datas]="datas" [titles]="titles" [datarow]="datarow">
@@ -10,10 +10,10 @@
           <span>{{ "ID" }}</span>
         </div>
         <div>
-          <span>{{ "Name" }}</span>
+          <span>{{ "通訊處名稱" }}</span>
         </div>
         <div>
-          <span>{{ "Action" }}</span>
+          <span>{{ "動作" }}</span>
         </div>
       </ng-template>
 
@@ -28,7 +28,10 @@
           </div>
           <div [ngClass]="{ active: nowSelect && nowSelect.id === data.id }">
             <button type="button" (click)="edit(i)">
-              {{ "Edit" }}
+              {{ "編輯" }}
+            </button>
+            <button type="button" (click)="viewPersons(i)">
+              {{ "查看人員" }}
             </button>
           </div>
         </ng-container>

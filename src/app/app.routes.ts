@@ -16,9 +16,9 @@ export const routes: Routes = [
         path: 'district',
         component: DistrictComponent,
       },
-      { path: 'district/:id/dept', component: DeptComponent },
-      { path: 'district/:id/person', component: PersonComponent },
-
+      { path: 'district/:districtId/dept', component: DeptComponent },
+      { path: 'district/:districtId/person', component: PersonComponent },
+      { path: 'district/:districtId/dept/:deptId/person', component: PersonComponent },
       { path: 'person', component: PersonComponent },
     ],
   },

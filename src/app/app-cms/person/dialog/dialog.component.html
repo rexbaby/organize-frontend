@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="header">
+    <span>{{ action }}</span>
+  </div>
+  <div class="main">
+    <div class="row" *ngIf="districtName">
+      <span class="fixed">區域名稱：</span>
+      <span>{{ districtName }}</span>
+    </div>
+    <div class="row" *ngIf="deptName">
+      <span class="fixed">通訊處名稱：</span>
+      <span>{{ deptName }}</span>
+    </div>
+    <form [formGroup]="formGroup">
+      <div class="row" *ngIf="this.data.districtId === -1">
+        <span class="fixed">區域名稱：</span>
+        <select
+          formControlName="districtId"
+          (change)="setDepts(formGroup.get('districtId')?.value)"
+          class="input"
+        >
+          <option *ngFor="let district of districts" [value]="district.id">
+            {{ district.name }}
+          </option>
+        </select>
+      </div>
+      <div class="row" *ngIf="this.data.deptId === -1 && !!depts.length">
+        <span class="fixed">通訊處名稱：</span>
+        <select formControlName="deptId" class="input">
+          <option *ngFor="let dept of depts" [value]="dept.id">
+            {{ dept.name }}
+          </option>
+        </select>
+      </div>
+      <div class="row">
+        <span class="fixed">人員名稱：</span>
+        <input type="text" formControlName="name" class="input" />
+      </div>
+    </form>
+  </div>
+  <div class="footer row center">
+    <button type="button" (click)="cancel()">取消</button>
+    <button type="button" (click)="enter()">確定</button>
+  </div>
+</div>

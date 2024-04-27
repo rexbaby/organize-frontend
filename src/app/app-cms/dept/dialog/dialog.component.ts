@@ -22,7 +22,7 @@ import { IDept } from '../../../base-model/dept';
 })
 export class DialogComponent implements OnInit {
   formGroup!: FormGroup;
-  action: 'Dialog Insert' | 'Dialog Edit' = 'Dialog Insert';
+  action: '通訊處新增' | '通訊處編輯' = '通訊處新增';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,11 +31,11 @@ export class DialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.action = !!this.data ? 'Dialog Edit' : 'Dialog Insert';
+    this.action = !!this.data ? '通訊處編輯' : '通訊處新增';
     this.formGroup = this.formBuilder.group({
       name: ['', Validators.required],
     });
-    if (this.action === 'Dialog Edit') {
+    if (this.action === '通訊處編輯') {
       this.formGroup.patchValue({
         name: this.data?.name || '',
       });

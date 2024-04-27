@@ -4,12 +4,14 @@
   </div>
   <div class="main">
     <form [formGroup]="formGroup">
-      <span class="fixed">DistrictName:</span>
-      <input type="text" formControlName="name" class="input"/>
+      <div class="row">
+        <span class="fixed">區域名稱:</span>
+        <input type="text" formControlName="name" class="input"/>
+      </div>
     </form>
   </div>
   <div class="footer row center">
-    <button type="button" (click)="cancel()">Cancel</button>
-    <button type="button" (click)="enter()">Enter</button>
+    <button type="button" (click)="cancel()">取消</button>
+    <button type="button" (click)="enter()">確定</button>
   </div>
 </div>

@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { IDept } from '../../base-model/dept';
 import { ActivatedRoute } from '@angular/router';
+import { PermissionService } from '../../base-service/permission/permission.service';
 
 @Component({
   selector: 'app-dept',
@@ -27,15 +28,17 @@ export class DeptComponent implements OnInit {
     private deptService: DeptService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private permissionService: PermissionService
   ) {}
 
   ngOnInit(): void {
-    this.districtId = +this.route.snapshot.params['id'];
+    this.districtId = +this.route.snapshot.params['districtId'];
     this.setDatas();
   }
 
   setDatas() {
+    this.nowSelect = null;
     this.deptService.getAll(this.districtId).subscribe((res: IResponse) => {
       this.datas = <IDept[]>res.data;
     });
@@ -90,6 +93,15 @@ export class DeptComponent implements OnInit {
       const result = res.affect?.success || false;
       this.snackBar.open(result ? 'Insert Success' : 'Insert Fail');
       if (result) this.setDatas();
+    });
+  }
+
+  viewPersons(index: number){
+    const dept = this.datas[index];
+    this.permissionService.nextPermissionBranch({
+      url: `district/${this.districtId}/dept/${dept.id}/person`,
+      title: `查看人員(通訊處)：${dept.name}`,
+      suffix: '',
     });
   }
 }

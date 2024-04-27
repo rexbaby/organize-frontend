@@ -34,6 +34,7 @@ export class DistrictComponent implements OnInit {
   }
 
   setDatas() {
+    this.nowSelect = null;
     this.districtService.getAll().subscribe((res: IResponse) => {
       this.datas = <IDistrict[]>res.data;
     });
@@ -43,11 +44,20 @@ export class DistrictComponent implements OnInit {
     this.nowSelect = this.datas[index];
   }
 
-  dept(index: number) {
-    this.setNowSelect(index);
+  viewDepts(index: number) {
+    const district = this.datas[index];
     this.permissionService.nextPermissionBranch({
-      url: `district/${this.nowSelect.id}/dept`,
-      title: `Dept_${this.nowSelect.name}`,
+      url: `district/${district.id}/dept`,
+      title: `查看區域：${district.name}`,
+      suffix: '',
+    });
+  }
+
+  viewPersons(index: number){
+    const district = this.datas[index];
+    this.permissionService.nextPermissionBranch({
+      url: `district/${district.id}/person`,
+      title: `查看人員(區域)：${district.name}`,
       suffix: '',
     });
   }
