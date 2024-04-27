@@ -105,8 +105,4 @@ export class DialogComponent implements OnInit {
     delete formValue.districtId;
     this.dialogRef.close(this.formGroup.value);
   }
-
-  cancel() {
-    this.dialogRef.close();
-  }
 }

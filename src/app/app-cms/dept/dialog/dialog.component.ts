@@ -45,8 +45,4 @@ export class DialogComponent implements OnInit {
   enter() {
     this.dialogRef.close(this.formGroup.value);
   }
-
-  cancel() {
-    this.dialogRef.close();
-  }
 }
