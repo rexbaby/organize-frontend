@@ -59,8 +59,16 @@ export class DeptComponent implements OnInit {
   }
 
   openDialog() {
+    let districtId = this.districtId;
+    if (this.nowSelect) {
+      districtId = this.nowSelect.district.id;
+    }
+
     const dialogRef = this.dialog.open(DialogComponent, {
-      data: this.nowSelect,
+      data: {
+        sel: this.nowSelect,
+        districtId: districtId,
+      },
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (!result) {
@@ -77,7 +85,7 @@ export class DeptComponent implements OnInit {
         this.nowSelect = null;
       } else {
         result = Object.assign(result, {
-          districtId: this.districtId,
+          districtId: districtId,
         });
         this.create(result);
       }

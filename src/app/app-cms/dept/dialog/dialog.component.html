@@ -5,9 +5,9 @@
   <div class="main">
     <div class="row">
       <span>區域名稱：</span>
-      <span>{{ data?.district?.name }}</span>
+      <span>{{ districtName }}</span>
     </div>
-    <form [formGroup]="formGroup">
+    <form [formGroup]="formGroup" *ngIf="formGroup">
       <span class="fixed">通訊處名稱：</span>
       <input type="text" formControlName="name" class="input" />
     </form>
